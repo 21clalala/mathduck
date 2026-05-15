@@ -142,6 +142,32 @@ main { padding-top: var(--nav-h); min-height: 100vh; }
 }
 .padlet-wrap.active { display: block; }
 .padlet-wrap iframe { width: 100%; height: 600px; border: none; display: block; }
+
+/* FULLSCREEN PADLET PAGE */
+.page-fullscreen {
+  padding: 0 !important;
+  display: none;
+  flex-direction: column;
+  height: calc(100vh - var(--nav-h));
+}
+.page-fullscreen.active { display: flex; }
+.page-fullscreen .fs-tabbar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px;
+  background: var(--white); border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.page-fullscreen .fs-tab {
+  padding: 6px 16px; font-size: 13px; font-weight: 500;
+  border: 1px solid var(--border); border-radius: 20px;
+  cursor: pointer; transition: all 0.15s; background: var(--bg);
+  color: var(--text-sub);
+}
+.page-fullscreen .fs-tab.active { background: var(--accent); color: var(--white); border-color: var(--accent); }
+.page-fullscreen .fs-padlet { flex: 1; display: none; overflow: hidden; }
+.page-fullscreen .fs-padlet.active { display: block; }
+.page-fullscreen .fs-padlet .padlet-embed { height: 100% !important; }
+.page-fullscreen .fs-padlet .padlet-embed iframe { height: calc(100% - 28px) !important; }
 .padlet-placeholder {
   display: flex; flex-direction: column; align-items: center;
   justify-content: center; height: 500px; gap: 14px;
@@ -175,7 +201,7 @@ footer {
 <body>
 
 <nav>
-  <a class="nav-logo" href="#" onclick="showPage('home')">덕형</a>
+  <a class="nav-logo" href="#" onclick="showPage('home')">π 덕형수학싸이트</a>
   <div class="nav-links">
     <div class="nav-item">
       <a class="nav-link" href="#" onclick="showPage('nongeul')">
@@ -249,75 +275,131 @@ footer {
   </div>
 
   <!-- 논리적글쓰기 -->
-  <div class="page" id="page-nongeul">
-    <div class="page-header">
-      <h2>논리적글쓰기</h2>
-      <p>반을 선택해주세요.</p>
+  <div class="page page-fullscreen" id="page-nongeul">
+    <div class="fs-tabbar">
+      <div class="fs-tab active" id="nongeul-tab31" onclick="showSubTab('nongeul','tab31')">논글 3-1</div>
+      <div class="fs-tab" id="nongeul-tab33" onclick="showSubTab('nongeul','tab33')">논글 3-3</div>
     </div>
-    <div class="sub-tabs">
-      <div class="sub-tab active" id="nongeul-tab31" onclick="showSubTab('nongeul','tab31')">논글 3-1</div>
-      <div class="sub-tab" id="nongeul-tab33" onclick="showSubTab('nongeul','tab33')">논글 3-3</div>
-    </div>
-    <div class="padlet-wrap active" id="nongeul-tab31-wrap">
-      <div class="padlet-placeholder">
-        <div class="ph-icon">📋</div>
-        <p>여기에 논글 3-1 패들렛을 넣으세요.<br>아래 방법으로 iframe 코드를 교체하면 됩니다.</p>
-        <code>패들렛 → 공유 → 임베드 → iframe 코드 복사</code>
+    <div class="fs-padlet active" id="nongeul-tab31-wrap">
+      <div class="padlet-embed" style="border:none; box-sizing:border-box; overflow:hidden; position:relative; width:100%; height:100%; background:#F4F4F4;">
+        <p style="padding:0; margin:0; height:calc(100% - 28px);">
+          <iframe src="https://padlet.com/embed/hcfrig77xwa0gogw" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" allowfullscreen style="width:100%; height:100%; display:block; padding:0; margin:0;"></iframe>
+        </p>
+        <div style="display:flex; align-items:center; justify-content:end; margin:0; padding:8px 8px 8px 0; height:28px; box-sizing:border-box;">
+          <a href="https://padlet.com?ref=embed" style="display:flex; align-items:center; gap:5px; flex-grow:0; margin:0; border:none; padding:0; text-decoration:none;" target="_blank">
+            <span aria-hidden style="color:#9E9E9E; font-size:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif; line-height:1;">Made with</span>
+            <img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0; margin:0; background:0 0; border:none; box-shadow:none; display:block;" alt="Padlet으로 만듦">
+          </a>
+        </div>
       </div>
-      <!-- 패들렛 임베드 예시 (아래 iframe을 실제 코드로 교체하세요)
-      <iframe src="https://padlet.com/embed/여기에패들렛주소" allowfullscreen></iframe>
-      -->
     </div>
-    <div class="padlet-wrap" id="nongeul-tab33-wrap">
-      <div class="padlet-placeholder">
-        <div class="ph-icon">📋</div>
-        <p>여기에 논글 3-3 패들렛을 넣으세요.</p>
-        <code>패들렛 → 공유 → 임베드 → iframe 코드 복사</code>
+    <div class="fs-padlet" id="nongeul-tab33-wrap">
+      <div class="padlet-embed" style="border:none; box-sizing:border-box; overflow:hidden; position:relative; width:100%; height:100%; background:#F4F4F4;">
+        <p style="padding:0; margin:0; height:calc(100% - 28px);">
+          <iframe src="https://padlet.com/embed/34s4kayz4ioknd9d" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" allowfullscreen style="width:100%; height:100%; display:block; padding:0; margin:0;"></iframe>
+        </p>
+        <div style="display:flex; align-items:center; justify-content:end; margin:0; padding:8px 8px 8px 0; height:28px; box-sizing:border-box;">
+          <a href="https://padlet.com?ref=embed" style="display:flex; align-items:center; gap:5px; flex-grow:0; margin:0; border:none; padding:0; text-decoration:none;" target="_blank">
+            <span aria-hidden style="color:#9E9E9E; font-size:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif; line-height:1;">Made with</span>
+            <img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0; margin:0; background:0 0; border:none; box-shadow:none; display:block;" alt="Padlet으로 만듦">
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- 미적분 알림 -->
-  <div class="page" id="page-calculus">
-    <div class="page-header">
-      <h2>미적분 알림</h2>
-      <p>수업 일정 및 공지사항</p>
-    </div>
-    <div class="padlet-wrap active" id="calculus-wrap">
-      <div class="padlet-placeholder">
-        <div class="ph-icon">📐</div>
-        <p>여기에 미적분 알림 패들렛을 넣으세요.</p>
-        <code>패들렛 → 공유 → 임베드 → iframe 코드 복사</code>
+  <div class="page page-fullscreen" id="page-calculus">
+    <div class="fs-padlet active" id="calculus-wrap">
+      <div class="padlet-embed" style="border:none; box-sizing:border-box; overflow:hidden; position:relative; width:100%; height:100%; background:#F4F4F4;">
+        <p style="padding:0; margin:0; height:calc(100% - 28px);">
+          <iframe src="https://padlet.com/embed/d9kkujkpaxsp7vsu" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" allowfullscreen style="width:100%; height:100%; display:block; padding:0; margin:0;"></iframe>
+        </p>
+        <div style="display:flex; align-items:center; justify-content:end; margin:0; padding:8px 8px 8px 0; height:28px; box-sizing:border-box;">
+          <a href="https://padlet.com?ref=embed" style="display:flex; align-items:center; gap:5px; flex-grow:0; margin:0; border:none; padding:0; text-decoration:none;" target="_blank">
+            <span aria-hidden style="color:#9E9E9E; font-size:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif; line-height:1;">Made with</span>
+            <img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0; margin:0; background:0 0; border:none; box-shadow:none; display:block;" alt="Padlet으로 만듦">
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- 미적분 포트폴리오 -->
-  <div class="page" id="page-portfolio">
-    <div class="page-header">
-      <h2>미적분 포트폴리오</h2>
-      <p>포트폴리오 제출 및 열람</p>
+  <div class="page page-fullscreen" id="page-portfolio">
+    <div class="fs-tabbar">
+      <div class="fs-tab active" id="portfolio-tab4" onclick="showSubTab('portfolio','tab4')">4반</div>
+      <div class="fs-tab" id="portfolio-tab9" onclick="showSubTab('portfolio','tab9')">9반</div>
+      <div class="fs-tab" id="portfolio-tab12" onclick="showSubTab('portfolio','tab12')">12반</div>
+      <div class="fs-tab" id="portfolio-tab13" onclick="showSubTab('portfolio','tab13')">13반</div>
     </div>
-    <div class="padlet-wrap active" id="portfolio-wrap">
-      <div class="padlet-placeholder">
-        <div class="ph-icon">📂</div>
-        <p>여기에 미적분 포트폴리오 패들렛을 넣으세요.</p>
-        <code>패들렛 → 공유 → 임베드 → iframe 코드 복사</code>
+    <div class="fs-padlet active" id="portfolio-tab4-wrap">
+      <div class="padlet-embed" style="border:none; box-sizing:border-box; overflow:hidden; position:relative; width:100%; height:100%; background:#F4F4F4;">
+        <p style="padding:0; margin:0; height:calc(100% - 28px);">
+          <iframe src="https://padlet.com/embed/90qiwwfoblbe3v5e" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" allowfullscreen style="width:100%; height:100%; display:block; padding:0; margin:0;"></iframe>
+        </p>
+        <div style="display:flex; align-items:center; justify-content:end; margin:0; padding:8px 8px 8px 0; height:28px; box-sizing:border-box;">
+          <a href="https://padlet.com?ref=embed" style="display:flex; align-items:center; gap:5px; flex-grow:0; margin:0; border:none; padding:0; text-decoration:none;" target="_blank">
+            <span aria-hidden style="color:#9E9E9E; font-size:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif; line-height:1;">Made with</span>
+            <img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0; margin:0; background:0 0; border:none; box-shadow:none; display:block;" alt="Padlet으로 만듦">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="fs-padlet" id="portfolio-tab9-wrap">
+      <div class="padlet-embed" style="border:none; box-sizing:border-box; overflow:hidden; position:relative; width:100%; height:100%; background:#F4F4F4;">
+        <p style="padding:0; margin:0; height:calc(100% - 28px);">
+          <iframe src="https://padlet.com/embed/5xi1tga4j31mlgd5" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" allowfullscreen style="width:100%; height:100%; display:block; padding:0; margin:0;"></iframe>
+        </p>
+        <div style="display:flex; align-items:center; justify-content:end; margin:0; padding:8px 8px 8px 0; height:28px; box-sizing:border-box;">
+          <a href="https://padlet.com?ref=embed" style="display:flex; align-items:center; gap:5px; flex-grow:0; margin:0; border:none; padding:0; text-decoration:none;" target="_blank">
+            <span aria-hidden style="color:#9E9E9E; font-size:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif; line-height:1;">Made with</span>
+            <img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0; margin:0; background:0 0; border:none; box-shadow:none; display:block;" alt="Padlet으로 만듦">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="fs-padlet" id="portfolio-tab12-wrap">
+      <div class="padlet-embed" style="border:none; box-sizing:border-box; overflow:hidden; position:relative; width:100%; height:100%; background:#F4F4F4;">
+        <p style="padding:0; margin:0; height:calc(100% - 28px);">
+          <iframe src="https://padlet.com/embed/gxh1t2zbcpwp37gy" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" allowfullscreen style="width:100%; height:100%; display:block; padding:0; margin:0;"></iframe>
+        </p>
+        <div style="display:flex; align-items:center; justify-content:end; margin:0; padding:8px 8px 8px 0; height:28px; box-sizing:border-box;">
+          <a href="https://padlet.com?ref=embed" style="display:flex; align-items:center; gap:5px; flex-grow:0; margin:0; border:none; padding:0; text-decoration:none;" target="_blank">
+            <span aria-hidden style="color:#9E9E9E; font-size:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif; line-height:1;">Made with</span>
+            <img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0; margin:0; background:0 0; border:none; box-shadow:none; display:block;" alt="Padlet으로 만듦">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="fs-padlet" id="portfolio-tab13-wrap">
+      <div class="padlet-embed" style="border:none; box-sizing:border-box; overflow:hidden; position:relative; width:100%; height:100%; background:#F4F4F4;">
+        <p style="padding:0; margin:0; height:calc(100% - 28px);">
+          <iframe src="https://padlet.com/embed/p8dvhvp4hk15o5ag" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" allowfullscreen style="width:100%; height:100%; display:block; padding:0; margin:0;"></iframe>
+        </p>
+        <div style="display:flex; align-items:center; justify-content:end; margin:0; padding:8px 8px 8px 0; height:28px; box-sizing:border-box;">
+          <a href="https://padlet.com?ref=embed" style="display:flex; align-items:center; gap:5px; flex-grow:0; margin:0; border:none; padding:0; text-decoration:none;" target="_blank">
+            <span aria-hidden style="color:#9E9E9E; font-size:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif; line-height:1;">Made with</span>
+            <img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0; margin:0; background:0 0; border:none; box-shadow:none; display:block;" alt="Padlet으로 만듦">
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- 논술자료실 -->
-  <div class="page" id="page-essay">
-    <div class="page-header">
-      <h2>논술자료실</h2>
-      <p>논술 준비 자료 모음</p>
-    </div>
-    <div class="padlet-wrap active" id="essay-wrap">
-      <div class="padlet-placeholder">
-        <div class="ph-icon">📚</div>
-        <p>여기에 논술자료실 패들렛을 넣으세요.</p>
-        <code>패들렛 → 공유 → 임베드 → iframe 코드 복사</code>
+  <div class="page page-fullscreen" id="page-essay">
+    <div class="fs-padlet active" id="essay-wrap">
+      <div class="padlet-embed" style="border:none; box-sizing:border-box; overflow:hidden; position:relative; width:100%; height:100%; background:#F4F4F4;">
+        <p style="padding:0; margin:0; height:calc(100% - 28px);">
+          <iframe src="https://padlet.com/embed/zwatg90ufbsxcniv" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" allowfullscreen style="width:100%; height:100%; display:block; padding:0; margin:0;"></iframe>
+        </p>
+        <div style="display:flex; align-items:center; justify-content:end; margin:0; padding:8px 8px 8px 0; height:28px; box-sizing:border-box;">
+          <a href="https://padlet.com?ref=embed" style="display:flex; align-items:center; gap:5px; flex-grow:0; margin:0; border:none; padding:0; text-decoration:none;" target="_blank">
+            <span aria-hidden style="color:#9E9E9E; font-size:10px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif; line-height:1;">Made with</span>
+            <img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0; margin:0; background:0 0; border:none; box-shadow:none; display:block;" alt="Padlet으로 만듦">
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -336,10 +418,8 @@ function showPage(id) {
 }
 
 function showSubTab(page, tab) {
-  // 탭 버튼
   document.querySelectorAll('[id^="' + page + '-tab"]').forEach(t => t.classList.remove('active'));
   document.getElementById(page + '-' + tab).classList.add('active');
-  // 패들렛 wrap
   document.querySelectorAll('[id^="' + page + '-tab"][id$="-wrap"]').forEach(w => w.classList.remove('active'));
   document.getElementById(page + '-' + tab + '-wrap').classList.add('active');
   return false;
